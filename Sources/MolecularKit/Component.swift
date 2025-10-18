@@ -25,8 +25,8 @@ public struct Component: Codable, CustomStringConvertible, Identifiable, Sendabl
         self.charge = charge
     }
     
-    public init?(_ component: String) {
-        guard let match = component.firstMatch(of: componentPattern) else { return nil }
+    public init?(_ formula: String) {
+        guard let match = formula.firstMatch(of: componentPattern) else { return nil }
         guard let element = Element(rawValue: String(match.output.element)) else { return nil }
         
         self.id = UUID().uuidString
@@ -42,10 +42,12 @@ public struct Component: Codable, CustomStringConvertible, Identifiable, Sendabl
         self.coefficient = coefficient
     }
     
-    public var description: String {
+    public var formula: String {
         let elementSymbol = element.symbol
         let subscriptCoeff = (coefficient != nil) ? "_\(coefficient!)" : ""
         let superscriptCharge = (charge != nil) ? "^\(charge!)" : ""
         return "\(elementSymbol)\(subscriptCoeff)\(superscriptCharge)"
     }
+    
+    public var description: String { formula }
 }

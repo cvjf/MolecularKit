@@ -7,13 +7,16 @@
 
 import SwiftUI
 
-private extension EnvironmentValues {
-    @Entry var speciesFontSize: CGFloat = 17
-}
-
 public struct SpeciesLabel: View {
     let species: Species
-    @Environment(\.speciesFontSize) var size
+    @Environment(\.font) private var font
+    
+    private var uiFont: UIFont { font?.uiFont ?? .preferredFont(forTextStyle: .body) }
+    
+    public init?(_ formula: String) {
+        guard let species = Species(formula) else { return nil }
+        self.species = species
+    }
     
     public init(_ species: Species) {
         self.species = species
@@ -28,30 +31,27 @@ public struct SpeciesLabel: View {
             ForEach(species.components, id: \.element.symbol) { component in
                 HStack(spacing: 0) {
                     Text(verbatim: component.element.symbol)
-                        .font(.system(size: size, design: .monospaced))
+                        .font(.system(size: uiFont.pointSize, design: .monospaced))
                     
                     if component.charge != nil || component.coefficient != nil {
-                        VStack(alignment: .leading, spacing: -2) {
+                        VStack(alignment: .leading, spacing: -3) {
                             Text(verbatim: component.charge ?? " ")
                             Text(verbatim: component.coefficient ?? " ")
                         }
-                        .font(.system(size: size * 0.55, design: .monospaced))
+                        .font(.system(size: uiFont.pointSize * 0.5, design: .monospaced))
                     }
                 }
             }
         }
+        .padding(0)
     }
 }
-
-public extension View {
-    func speciesFontSize(_ size: CGFloat) -> some View {
-        environment(\.speciesFontSize, size)
-    }
-}
-
 
 #Preview {
     VStack {
+        HStack {
+            ChemText(string: "The nitrogen cycle converts ammonia ($NH_3$) into nitrite ($NO_2^-$) and then nitrate ($NO_3^-$) through beneficial bacteria.")
+        }
         HStack {
             SpeciesLabel(.nitrite)
             SpeciesLabel(.init("H_2^2++")!)
