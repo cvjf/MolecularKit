@@ -7,139 +7,138 @@
 
 import SwiftUI
 
-/// Enum representing all elements of the periodic table
-public enum Element: CaseIterable, Codable, Sendable {
+public enum Element: String, CaseIterable, Codable, Sendable, RawRepresentable {
     // Period 1
-    case hydrogen
-    case helium
+    case hydrogen = "H"
+    case helium = "He"
     
     // Period 2
-    case lithium
-    case beryllium
-    case boron
-    case carbon
-    case nitrogen
-    case oxygen
-    case fluorine
-    case neon
+    case lithium = "Li"
+    case beryllium = "Be"
+    case boron = "B"
+    case carbon = "C"
+    case nitrogen = "N"
+    case oxygen = "O"
+    case fluorine = "F"
+    case neon = "Ne"
     
     // Period 3
-    case sodium
-    case magnesium
-    case aluminum
-    case silicon
-    case phosphorus
-    case sulfur
-    case chlorine
-    case argon
+    case sodium = "Na"
+    case magnesium = "Mg"
+    case aluminum = "Al"
+    case silicon = "Si"
+    case phosphorus = "P"
+    case sulfur = "S"
+    case chlorine = "Cl"
+    case argon = "Ar"
     
     // Period 4
-    case potassium
-    case calcium
-    case scandium
-    case titanium
-    case vanadium
-    case chromium
-    case manganese
-    case iron
-    case cobalt
-    case nickel
-    case copper
-    case zinc
-    case gallium
-    case germanium
-    case arsenic
-    case selenium
-    case bromine
-    case krypton
+    case potassium = "K"
+    case calcium = "Ca"
+    case scandium = "Sc"
+    case titanium = "Ti"
+    case vanadium = "V"
+    case chromium = "Cr"
+    case manganese = "Mn"
+    case iron = "Fe"
+    case cobalt = "Co"
+    case nickel = "Ni"
+    case copper = "Cu"
+    case zinc = "Zn"
+    case gallium = "Ga"
+    case germanium = "Ge"
+    case arsenic = "As"
+    case selenium = "Se"
+    case bromine = "Br"
+    case krypton = "Kr"
     
     // Period 5
-    case rubidium
-    case strontium
-    case yttrium
-    case zirconium
-    case niobium
-    case molybdenum
-    case technetium
-    case ruthenium
-    case rhodium
-    case palladium
-    case silver
-    case cadmium
-    case indium
-    case tin
-    case antimony
-    case tellurium
-    case iodine
-    case xenon
+    case rubidium = "Rb"
+    case strontium = "Sr"
+    case yttrium = "Y"
+    case zirconium = "Zr"
+    case niobium = "Nb"
+    case molybdenum = "Mo"
+    case technetium = "Tc"
+    case ruthenium = "Ru"
+    case rhodium = "Rh"
+    case palladium = "Pd"
+    case silver = "Ag"
+    case cadmium = "Cd"
+    case indium = "In"
+    case tin = "Sn"
+    case antimony = "Sb"
+    case tellurium = "Te"
+    case iodine = "I"
+    case xenon = "Xe"
     
     // Period 6
-    case cesium
-    case barium
-    case lanthanum
-    case cerium
-    case praseodymium
-    case neodymium
-    case promethium
-    case samarium
-    case europium
-    case gadolinium
-    case terbium
-    case dysprosium
-    case holmium
-    case erbium
-    case thulium
-    case ytterbium
-    case lutetium
-    case hafnium
-    case tantalum
-    case tungsten
-    case rhenium
-    case osmium
-    case iridium
-    case platinum
-    case gold
-    case mercury
-    case thallium
-    case lead
-    case bismuth
-    case polonium
-    case astatine
-    case radon
+    case cesium = "Cs"
+    case barium = "Ba"
+    case lanthanum = "La"
+    case cerium = "Ce"
+    case praseodymium = "Pr"
+    case neodymium = "Nd"
+    case promethium = "Pm"
+    case samarium = "Sm"
+    case europium = "Eu"
+    case gadolinium = "Gd"
+    case terbium = "Tb"
+    case dysprosium = "Dy"
+    case holmium = "Ho"
+    case erbium = "Er"
+    case thulium = "Tm"
+    case ytterbium = "Yb"
+    case lutetium = "Lu"
+    case hafnium = "Hf"
+    case tantalum = "Ta"
+    case tungsten = "W"
+    case rhenium = "Re"
+    case osmium = "Os"
+    case iridium = "Ir"
+    case platinum = "Pt"
+    case gold = "Au"
+    case mercury = "Hg"
+    case thallium = "Tl"
+    case lead = "Pb"
+    case bismuth = "Bi"
+    case polonium = "Po"
+    case astatine = "At"
+    case radon = "Rn"
     
     // Period 7
-    case francium
-    case radium
-    case actinium
-    case thorium
-    case protactinium
-    case uranium
-    case neptunium
-    case plutonium
-    case americium
-    case curium
-    case berkelium
-    case californium
-    case einsteinium
-    case fermium
-    case mendelevium
-    case nobelium
-    case lawrencium
-    case rutherfordium
-    case dubnium
-    case seaborgium
-    case bohrium
-    case hassium
-    case meitnerium
-    case darmstadtium
-    case roentgenium
-    case copernicium
-    case nihonium
-    case flerovium
-    case moscovium
-    case livermorium
-    case tennessine
-    case oganesson
+    case francium = "Fr"
+    case radium = "Ra"
+    case actinium = "Ac"
+    case thorium = "Th"
+    case protactinium = "Pa"
+    case uranium = "U"
+    case neptunium = "Np"
+    case plutonium = "Pu"
+    case americium = "Am"
+    case curium = "Cm"
+    case berkelium = "Bk"
+    case californium = "Cf"
+    case einsteinium = "Es"
+    case fermium = "Fm"
+    case mendelevium = "Md"
+    case nobelium = "No"
+    case lawrencium = "Lr"
+    case rutherfordium = "Rf"
+    case dubnium = "Db"
+    case seaborgium = "Sg"
+    case bohrium = "Bh"
+    case hassium = "Hs"
+    case meitnerium = "Mt"
+    case darmstadtium = "Ds"
+    case roentgenium = "Rg"
+    case copernicium = "Cn"
+    case nihonium = "Nh"
+    case flerovium = "Fl"
+    case moscovium = "Mc"
+    case livermorium = "Lv"
+    case tennessine = "Ts"
+    case oganesson = "Og"
 }
 
 extension Element {
@@ -267,129 +266,10 @@ extension Element {
     }
     
     public var symbol: String {
-        switch self {
-            case .hydrogen: return "H"
-            case .helium: return "He"
-            case .lithium: return "Li"
-            case .beryllium: return "Be"
-            case .boron: return "B"
-            case .carbon: return "C"
-            case .nitrogen: return "N"
-            case .oxygen: return "O"
-            case .fluorine: return "F"
-            case .neon: return "Ne"
-            case .sodium: return "Na"
-            case .magnesium: return "Mg"
-            case .aluminum: return "Al"
-            case .silicon: return "Si"
-            case .phosphorus: return "P"
-            case .sulfur: return "S"
-            case .chlorine: return "Cl"
-            case .argon: return "Ar"
-            case .potassium: return "K"
-            case .calcium: return "Ca"
-            case .scandium: return "Sc"
-            case .titanium: return "Ti"
-            case .vanadium: return "V"
-            case .chromium: return "Cr"
-            case .manganese: return "Mn"
-            case .iron: return "Fe"
-            case .cobalt: return "Co"
-            case .nickel: return "Ni"
-            case .copper: return "Cu"
-            case .zinc: return "Zn"
-            case .gallium: return "Ga"
-            case .germanium: return "Ge"
-            case .arsenic: return "As"
-            case .selenium: return "Se"
-            case .bromine: return "Br"
-            case .krypton: return "Kr"
-            case .rubidium: return "Rb"
-            case .strontium: return "Sr"
-            case .yttrium: return "Y"
-            case .zirconium: return "Zr"
-            case .niobium: return "Nb"
-            case .molybdenum: return "Mo"
-            case .technetium: return "Tc"
-            case .ruthenium: return "Ru"
-            case .rhodium: return "Rh"
-            case .palladium: return "Pd"
-            case .silver: return "Ag"
-            case .cadmium: return "Cd"
-            case .indium: return "In"
-            case .tin: return "Sn"
-            case .antimony: return "Sb"
-            case .tellurium: return "Te"
-            case .iodine: return "I"
-            case .xenon: return "Xe"
-            case .cesium: return "Cs"
-            case .barium: return "Ba"
-            case .lanthanum: return "La"
-            case .cerium: return "Ce"
-            case .praseodymium: return "Pr"
-            case .neodymium: return "Nd"
-            case .promethium: return "Pm"
-            case .samarium: return "Sm"
-            case .europium: return "Eu"
-            case .gadolinium: return "Gd"
-            case .terbium: return "Tb"
-            case .dysprosium: return "Dy"
-            case .holmium: return "Ho"
-            case .erbium: return "Er"
-            case .thulium: return "Tm"
-            case .ytterbium: return "Yb"
-            case .lutetium: return "Lu"
-            case .hafnium: return "Hf"
-            case .tantalum: return "Ta"
-            case .tungsten: return "W"
-            case .rhenium: return "Re"
-            case .osmium: return "Os"
-            case .iridium: return "Ir"
-            case .platinum: return "Pt"
-            case .gold: return "Au"
-            case .mercury: return "Hg"
-            case .thallium: return "Tl"
-            case .lead: return "Pb"
-            case .bismuth: return "Bi"
-            case .polonium: return "Po"
-            case .astatine: return "At"
-            case .radon: return "Rn"
-            case .francium: return "Fr"
-            case .radium: return "Ra"
-            case .actinium: return "Ac"
-            case .thorium: return "Th"
-            case .protactinium: return "Pa"
-            case .uranium: return "U"
-            case .neptunium: return "Np"
-            case .plutonium: return "Pu"
-            case .americium: return "Am"
-            case .curium: return "Cm"
-            case .berkelium: return "Bk"
-            case .californium: return "Cf"
-            case .einsteinium: return "Es"
-            case .fermium: return "Fm"
-            case .mendelevium: return "Md"
-            case .nobelium: return "No"
-            case .lawrencium: return "Lr"
-            case .rutherfordium: return "Rf"
-            case .dubnium: return "Db"
-            case .seaborgium: return "Sg"
-            case .bohrium: return "Bh"
-            case .hassium: return "Hs"
-            case .meitnerium: return "Mt"
-            case .darmstadtium: return "Ds"
-            case .roentgenium: return "Rg"
-            case .copernicium: return "Cn"
-            case .nihonium: return "Nh"
-            case .flerovium: return "Fl"
-            case .moscovium: return "Mc"
-            case .livermorium: return "Lv"
-            case .tennessine: return "Ts"
-            case .oganesson: return "Og"
-        }
+        return rawValue
     }
     
-    public var fullName: LocalizedStringResource {
+    public var name: LocalizedStringResource {
         switch self {
             case .hydrogen: return .hydrogen
             case .helium: return .helium

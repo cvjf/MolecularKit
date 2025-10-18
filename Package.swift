@@ -23,6 +23,9 @@ let package = Package(
         .target(
             name: "MolecularKit"
         ),
-
+        .testTarget(
+            name: "MolecularKitTests",
+            dependencies: ["MolecularKit"]
+        ),
     ]
 )
