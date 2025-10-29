@@ -10,8 +10,13 @@ import SwiftUI
 public struct SpeciesLabel: View {
     let species: Species
     @Environment(\.font) private var font
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    private var uiFont: UIFont { font?.uiFont ?? .preferredFont(forTextStyle: .body) }
+    private var scaleFactor: CGFloat { dynamicTypeSize.scale}
+    private var uiFont: UIFont {
+        let baseFont = font?.uiFont ?? .preferredFont(forTextStyle: .body)
+        return baseFont.withSize(baseFont.pointSize * scaleFactor)
+    }
     
     public init?(_ formula: String) {
         guard let species = Species(formula) else { return nil }

@@ -10,10 +10,15 @@ import SwiftUI
 
 struct ChemText: UIViewRepresentable {
     @Environment(\.font) private var font
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let string: String
     
-    var uiFont: UIFont { font?.uiFont ?? .preferredFont(forTextStyle: .body) }
-    var baselineOffset: CGFloat { font?.baselineOffset ?? -4 }
+    private var scaleFactor: CGFloat { dynamicTypeSize.scale}
+    private var uiFont: UIFont {
+        let baseFont = font?.uiFont ?? .preferredFont(forTextStyle: .body)
+        return baseFont.withSize(baseFont.pointSize * scaleFactor)
+    }
+    private var baselineOffset: CGFloat { (font?.baselineOffset ?? -4) * scaleFactor }
     
     func makeUIView(context: Context) -> UILabel {
         let label = UILabel()
@@ -33,7 +38,10 @@ struct ChemText: UIViewRepresentable {
     
     func renderAsImage(formula: String) -> UIImage? {
         guard let species = Species(formula) else { return nil }
-        let renderer = ImageRenderer(content: SpeciesLabel(species).font(font))
+        let renderer = ImageRenderer(content: SpeciesLabel(species)
+            .dynamicTypeSize(dynamicTypeSize)
+            .font(font)
+        )
         renderer.scale = UIScreen.main.scale
         return renderer.uiImage
     }
@@ -74,7 +82,7 @@ struct ChemText: UIViewRepresentable {
 #Preview {
     ScrollView(.vertical) {
         ChemText(string: chemicalLorem)
-            .font(.largeTitle)
+            .font(.body)
             .padding()
     }
 }
